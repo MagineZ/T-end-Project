@@ -1,0 +1,8 @@
+*.asv
+*.orig
+*.pdf
+*.eps
+*.m~
+GUI/*.mat
+_site/
+testset/
