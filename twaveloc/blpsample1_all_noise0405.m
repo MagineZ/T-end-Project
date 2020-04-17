@@ -146,7 +146,7 @@ for kd=1:length(dnames)
   
     beats_todo = Rpeaks1;
     num_nonlocal = min(length(Rpeaks1),20);
-    x0_real = ECG_shrinkage0_qual( x0_real,Rpeaks1,beats_todo,sqi_T0,sqi_th,num_nonlocal, OptimalShrinkageOpt, 1,0);
+    x0_real = ECG_shrinkage0_qual1( x0_real,Rpeaks1,beats_todo,sqi_T0,sqi_th,num_nonlocal, OptimalShrinkageOpt, 1,0);
     annodata_sh(:,2) = x0_real;
     
     
@@ -164,7 +164,7 @@ for kd=1:length(dnames)
    
     beats_todo = Rpeaks2;
     num_nonlocal = min(length(Rpeaks2),20);
-    x1_real = ECG_shrinkage0_qual( x1_real,Rpeaks2,beats_todo,sqi_T1,sqi_th,num_nonlocal, OptimalShrinkageOpt, 1,0);
+    x1_real = ECG_shrinkage0_qual1( x1_real,Rpeaks2,beats_todo,sqi_T1,sqi_th,num_nonlocal, OptimalShrinkageOpt, 1,0);
     annodata_sh(:,3) = x1_real;
     
 

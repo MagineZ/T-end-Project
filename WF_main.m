@@ -10,13 +10,12 @@ addpath ([pwd,'/mcode'])
 addpath ([pwd,'/decomposition code'])
 addpath()
 %}
-addpath(genpath('/gtmp/peichunsu/Code Archive3'));
-addpath(genpath('/gtmp/peichunsu/ecg-kit-0.1.6'));
-addpath(genpath('/gtmp/peichunsu/MFEToolbox'))
+addpath(genpath(pwd));
+
 
 case_col = {'N733539765','N733549764', 'N733559763','N733569762','N733579761'};
 filename_col = {'180510_N733539765','180217_N733549764','180209_N733559763','180319_N733569762', '180220_N733579761'};
-cd('/gtmp/peichunsu/Tend data');
+cd('/WF Tend data');
 table_glucose = readtable('MMC_glucose05022019_a.xls');
 table_manual = readtable('MMC_QTauto_QTmanual_allevents.xls');
 OptimalShrinkageOpt = 'op'; % Optimal shrinkage norm options: 'fro', 'nuc', 'op'
@@ -28,45 +27,25 @@ opt = struct(...
     'JQRS_WINDOW', 15);
 
 
-basicTF.win = 500;
-basicTF.hop = 20;
-basicTF.fs = 100;
-basicTF.fr = 0.02;
-basicTF.feat = 'SST11';
-advTF.num_tap = 1;%num_tap(cc);
-advTF.win_type = 'Flattop'; %{'Gaussian','Thomson','multipeak','SWCE'}; %}
-%advTF.win_type = 'Hamming'; %{'Gaussian','Thomson','multipeak','SWCE'}; %}
-advTF.Smo = 1;
-advTF.Rej = 0;
-advTF.ths = 1E-6;
-advTF.HighFreq = 10/100;
-advTF.LowFreq = 0.5/100;
-advTF.lpc = 0;
-cepR.g = 0.3; % g(cc);%0.06;
-cepR.Tc=0;
-P.num_s = 1;
-P.num_c = 1;
-num_tap = 2 ;
-lam_curve = 10 ;% lambda for curve extraction (suggest: 10)
-lam_beat = 50 ;% lambda for beat tracking (suggest: 20)
-
 qual_all = [];
 bsqi_R = [];
 bsqi_Tend = [];
-q=0;
+q=0; % set tSQI threshold here
 fs0 = 200;
 fs = 1000;
 bsqi_Tend_pb = [];
 tsqi_all = [];
 bsqi_all = [];
+
 for ii = 1:5
     
     
     caseID = case_col{ii};
     fileName = filename_col{ii};
-    cd('/gtmp/peichunsu/Tend data');
+    cd ..
+    cd('/WF Tend data');
     load([caseID,'_ann_1110.mat']);
-    cd(['/gtmp/peichunsu/Tend data/',caseID]);
+    cd(caseID);
     ss = length(dir)-4;
     
     sss = ismember(table_glucose.FileName,fileName );

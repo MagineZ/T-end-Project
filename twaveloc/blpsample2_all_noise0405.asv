@@ -176,7 +176,7 @@ for kd=1:length(dnames)
     %beats_todo = Rpeaks2(Rpeaks2>max(1,Tendindq1c(1)-5*fs));beats_todo = beats_todo(beats_todo<=Tendindq1c(end)+5*fs);
     beats_todo = Rpeaks2;
     num_nonlocal = min(length(Rpeaks2),20);
-    x1_real = ECG_shrinkage0_qual1( x1_real,Rpeaks2,beats_todo,sqi_T1,sqi_th,num_nonlocal, OptimalShrinkageOpt, 1,0);
+    x1_real = ECG_shrinkage0_qua( x1_real,Rpeaks2,beats_todo,sqi_T1,sqi_th,num_nonlocal, OptimalShrinkageOpt, 1,0);
     annodata_sh(:,3) = x1_real;
     
     if Tend_mth == "Zhang"
